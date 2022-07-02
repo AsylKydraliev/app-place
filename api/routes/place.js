@@ -67,4 +67,14 @@ router.get('/:id', async (req, res, next) => {
     }
 });
 
+router.post('/place/:id', async (req, res, next) => {
+    try {
+        const placeRate = await Place.findOneAndUpdate({_id: req.params.id}, {rate: req.body.rate});
+
+        return res.send(placeRate);
+    }catch (e) {
+        next(e);
+    }
+});
+
 module.exports = router;

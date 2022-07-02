@@ -11,8 +11,9 @@ import { ImageData, Images } from '../../models/images.model';
 import { User } from '../../models/user.model';
 import { NgForm } from '@angular/forms';
 import { addReviewRequest, getReviewsRequest } from '../../store/reviews/reviews.actions';
-import { Review, ReviewClass, ReviewData } from '../../models/review.model';
+import { Review, ReviewData } from '../../models/review.model';
 import { NgbRatingConfig } from '@ng-bootstrap/ng-bootstrap';
+import { PlaceService } from '../../services/place.service';
 
 @Component({
   selector: 'app-place',
@@ -41,7 +42,12 @@ export class PlaceComponent implements OnInit {
   serviceSum!: number;
   interiorSum!: number;
 
-  constructor(private store:Store<AppState>, private route: ActivatedRoute, config: NgbRatingConfig) {
+  constructor(
+    private store:Store<AppState>,
+    private route: ActivatedRoute,
+    config: NgbRatingConfig,
+    private placeService: PlaceService
+  ) {
     this.place = store.select(state => state.places?.place);
     this.images = store.select(state => state.images.images);
     this.user = store.select(state => state.users.user);
@@ -61,6 +67,7 @@ export class PlaceComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
+      this.placeId = params['id'];
       this.store.dispatch(getPlaceByIdRequest({id: params['id']}));
       this.store.dispatch(getImagesByPlaceRequest({id: params['id']}));
       this.store.dispatch(getReviewsRequest({id: params['id']}));
@@ -76,15 +83,15 @@ export class PlaceComponent implements OnInit {
 
   getSum () {
     const sum = this.food.reduce((acc, number) => acc + number, 0);
-    this.foodSum = Math.round(sum / this.food.length);
+    this.foodSum = parseFloat((sum / this.food.length).toFixed(1));
 
     const sum2 = this.service.reduce((acc, number) => acc + number, 0);
-    this.serviceSum = Math.round(sum2 / this.food.length);
+    this.serviceSum = parseFloat((sum2 / this.food.length).toFixed(1));
 
     const sum3 = this.interior.reduce((acc, number) => acc + number, 0);
-    this.interiorSum = Math.round(sum3 / this.food.length);
+    this.interiorSum = parseFloat((sum3 / this.food.length).toFixed(1));
 
-    this.totalSum = Math.round((this.foodSum + this.serviceSum + this.interiorSum) / 3) ;
+    this.totalSum = parseFloat(((this.foodSum + this.serviceSum + this.interiorSum) / 3).toFixed(1)) ;
   }
 
   addReview() {
@@ -97,6 +104,7 @@ export class PlaceComponent implements OnInit {
     }
 
     this.store.dispatch(addReviewRequest({reviewData}));
+    this.placeService.addRate(this.placeId, this.totalSum);
   }
 
   addPhoto() {

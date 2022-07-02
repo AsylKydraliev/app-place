@@ -9,7 +9,7 @@
     >
     <mat-card-actions>
       <span class="title">{{ place.title }}</span>
-      <p *ngIf="place.rate > 0">{{ place.rate }}</p>
+      <p *ngIf="place.rate > 0">(rating: {{ place.rate }})</p>
     </mat-card-actions>
   </mat-card>
 </div>

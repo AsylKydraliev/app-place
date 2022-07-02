@@ -104,8 +104,8 @@
 
   <div *ngIf="!(user | async)" class="userMenu">
     Please
-    <a routerLink="register">register</a> or
-     <a routerLink="register">login</a> to leave a review
+    <a routerLink="/register">register</a> or
+     <a routerLink="/login">login</a> to leave a review
   </div>
   <div *ngIf="user | async" class="formReview">
     <h2>Add review</h2>

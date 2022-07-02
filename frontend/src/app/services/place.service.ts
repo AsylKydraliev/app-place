@@ -42,4 +42,8 @@ export class PlaceService {
   getPlaceById(id: string) {
     return this.http.get<Place>(environment.apiUrl + '/places/' + id);
   }
+
+  addRate(id: string, rate: {}) {
+    return this.http.post(environment.apiUrl + '/places/rate/', + id, rate);
+  }
 }

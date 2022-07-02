@@ -14,6 +14,7 @@ import { environment } from '../../../environments/environment';
 export class HomeComponent implements OnInit {
 
   places!: Observable<Place[]>;
+  reviewsAmount!: number;
   apiUrl = environment.apiUrl;
 
   constructor(private store:Store<AppState>) {
@@ -23,5 +24,4 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.store.dispatch(fetchPlacesRequest());
   }
-
 }

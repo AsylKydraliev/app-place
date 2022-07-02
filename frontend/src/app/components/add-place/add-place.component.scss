@@ -28,3 +28,18 @@ form {
     margin: 25px 0 0 auto;
   }
 }
+
+.form-field{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  .text{
+    width: 30%;
+  }
+  .checkbox{
+    width: 50%;
+    input {
+      margin-right: 15px;
+    }
+  }
+}
