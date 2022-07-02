@@ -12,6 +12,7 @@ import { environment } from '../../../environments/environment';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+
   places!: Observable<Place[]>;
   apiUrl = environment.apiUrl;
 

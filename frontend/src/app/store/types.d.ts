@@ -11,6 +11,7 @@ export type UserState = {
 
 export type PlaceState = {
   places: PlaceModel[],
+  place: PlaceModel | null,
   fetchLoading: boolean,
   fetchError: null | string,
   createLoading: boolean,

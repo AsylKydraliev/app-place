@@ -6,7 +6,7 @@ import {
   createPlacesSuccess,
   fetchPlacesFailure,
   fetchPlacesRequest,
-  fetchPlacesSuccess
+  fetchPlacesSuccess, getPlaceByIdFailure, getPlaceByIdRequest, getPlaceByIdSuccess
 } from './places.actions';
 import { catchError, map, mergeMap, of, tap } from 'rxjs';
 import { PlaceService } from '../../services/place.service';
@@ -43,6 +43,17 @@ export class PlacesEffects {
           void this.router.navigate(['/']);
         }),
         catchError(() => of(createPlacesFailure({
+          error: 'Something went wrong!'
+        })))
+      )
+    ))
+  );
+
+  getPlaceById = createEffect(() => this.actions.pipe(
+    ofType(getPlaceByIdRequest),
+    mergeMap(({id}) => this.placeService.getPlaceById(id).pipe(
+        map(place => getPlaceByIdSuccess({place})),
+        catchError(() => of(getPlaceByIdFailure({
           error: 'Something went wrong!'
         })))
       )

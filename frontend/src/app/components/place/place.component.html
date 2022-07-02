@@ -1,0 +1,19 @@
+<div class="place">
+  <div class="placeInfo">
+    <div class="placeContent">
+      <div class="placeDesc">
+        <h1>{{ placeData?.title }}</h1>
+        <p>{{ placeData?.description }}</p>
+      </div>
+      <div class="photo">
+        <img [src]="apiUrl + '/uploads/' + placeData?.mainImage" alt="">
+      </div>
+    </div>
+    <div class="gallery">
+      gallery
+    </div>
+  </div>
+  <div class="rating"></div>
+  <div class="addReview"></div>
+  <div class="addPhoto"></div>
+</div>

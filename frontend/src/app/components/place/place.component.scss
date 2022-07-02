@@ -1,0 +1,24 @@
+.place {
+  margin: 20px 0;
+}
+
+.placeInfo{
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid #3f51b5;
+  .placeContent {
+    display: flex;
+    justify-content: space-between;
+  }
+  .placeDesc {
+    width: 50%;
+  }
+  .photo {
+    width: 50%;
+    text-align: right;
+    img {
+      width: 450px;
+      height: 300px;
+    }
+  }
+}

@@ -38,4 +38,8 @@ export class PlaceService {
     });
     return this.http.post<Place>(environment.apiUrl + `/places`, formData);
   }
+
+  getPlaceById(id: string) {
+    return this.http.get<Place>(environment.apiUrl + '/places/' + id);
+  }
 }

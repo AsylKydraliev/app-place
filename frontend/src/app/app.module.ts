@@ -30,6 +30,7 @@ import { AddPlaceComponent } from './components/add-place/add-place.component';
 import { placesReducer } from './store/places/places.reducer';
 import { PlacesEffects } from './store/places/places.effects';
 import { AuthInterceptor } from './auth.interceptor';
+import { PlaceComponent } from './components/place/place.component';
 
 export const localStorageSyncReducer = (reducer: ActionReducer<any>) => {
   return localStorageSync({
@@ -49,7 +50,8 @@ const metaReducers: Array<MetaReducer> = [localStorageSyncReducer];
         LoginComponent,
         FileInputComponent,
         ValidateIdenticalDirective,
-        AddPlaceComponent
+        AddPlaceComponent,
+        PlaceComponent
     ],
     imports: [
         BrowserModule,
