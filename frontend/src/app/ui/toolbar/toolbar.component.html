@@ -1,0 +1,29 @@
+<mat-toolbar color="primary">
+  <h2>
+    <a routerLink="/">My App</a>
+  </h2>
+  <nav *ngIf="!(user | async) else userMenu">
+    <a mat-button routerLink="/login">SIGN IN</a>
+    <a mat-button routerLink="/register">REGISTER</a>
+  </nav>
+</mat-toolbar>
+
+<ng-template #userMenu>
+  <nav>
+    <button mat-icon-button [matMenuTriggerFor]="menu" class="avatar">
+      <img
+        *ngIf="(user | async)?.avatar"
+        [src]="api + '/uploads/' + (user | async)?.avatar"
+        alt="avatar user"
+        width="30"
+        height="30"
+      >
+      <mat-icon  *ngIf="!(user | async)?.avatar" class="register">account_circle</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item disabled>{{ (user | async)?.email }}</button>
+      <a mat-menu-item routerLink="/profile">Profile</a>
+      <button mat-menu-item (click)="logout()">Logout</button>
+    </mat-menu>
+  </nav>
+</ng-template>

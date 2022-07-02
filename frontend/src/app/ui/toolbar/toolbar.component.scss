@@ -1,0 +1,26 @@
+mat-toolbar {
+  padding: 0 80px;
+  display: flex;
+  justify-content: space-between;
+}
+
+nav a {
+  text-decoration: none;
+  color: white;
+}
+
+h2 {
+  a{
+    color: white;
+    text-decoration: none;
+  }
+}
+
+.avatar{
+  text-align: center;
+}
+
+mat-icon {
+  font-size: 30px;
+  margin-right: 5px;
+}

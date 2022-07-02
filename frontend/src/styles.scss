@@ -1,0 +1,17 @@
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.error {
+  background-color: #f44336;
+  padding: 20px;
+  color: white;
+  margin-bottom: 15px;
+  text-align: center;
+  border-radius: 2px;
+}
