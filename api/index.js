@@ -6,6 +6,7 @@ const config = require("./config");
 const users = require('./routes/user');
 const places = require('./routes/place');
 const images = require('./routes/images');
+const reviews = require('./routes/review');
 
 const app = express();
 const port = 8000;
@@ -15,6 +16,7 @@ app.use(express.json());
 app.use('/users', users);
 app.use('/places', places);
 app.use('/images', images);
+app.use('/reviews', reviews);
 app.use(express.static('public'));
 
 const run = async() => {

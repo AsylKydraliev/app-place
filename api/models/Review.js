@@ -30,7 +30,8 @@ const ReviewSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'User',
         required: true
-    }
+    },
+    date: String
 })
 
 const Review = mongoose.model('Review', ReviewSchema);

@@ -15,7 +15,6 @@ import { Store } from '@ngrx/store';
 import { AppState } from '../types';
 
 @Injectable()
-
 export class ImagesEffects {
 
   constructor(
@@ -31,6 +30,7 @@ export class ImagesEffects {
         map(image => addPhotoSuccess({image})),
         tap(() => {
           this.helpers.openSnackbar('Photo added');
+          this.store.dispatch(getImagesByPlaceRequest({id: imageData.place}));
         }),
         catchError(() => of(addPhotoFailure({
           error: 'Something went wrong!'

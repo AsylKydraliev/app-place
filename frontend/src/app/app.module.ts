@@ -34,6 +34,9 @@ import { PlaceComponent } from './components/place/place.component';
 import { ImagesEffects } from './store/images/images.effects';
 import { imagesReducer } from './store/images/images.reducer';
 import { MatSelectModule } from '@angular/material/select';
+import { reviewsReducer } from './store/reviews/reviews.reducer';
+import { ReviewsEffects } from './store/reviews/reviews.effects';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 export const localStorageSyncReducer = (reducer: ActionReducer<any>) => {
   return localStorageSync({
@@ -65,10 +68,11 @@ const metaReducers: Array<MetaReducer> = [localStorageSyncReducer];
     StoreModule.forRoot({
       users: usersReducer,
       places: placesReducer,
-      images: imagesReducer
+      images: imagesReducer,
+      reviews: reviewsReducer,
     }, {metaReducers}),
     EffectsModule.forRoot([
-      UsersEffects, PlacesEffects, ImagesEffects
+      UsersEffects, PlacesEffects, ImagesEffects, ReviewsEffects
     ]),
     MatToolbarModule,
     MatIconModule,
@@ -79,7 +83,8 @@ const metaReducers: Array<MetaReducer> = [localStorageSyncReducer];
     MatInputModule,
     MatSnackBarModule,
     MatMenuModule,
-    MatSelectModule
+    MatSelectModule,
+    NgbModule
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],
   bootstrap: [AppComponent]

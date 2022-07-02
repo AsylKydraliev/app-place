@@ -19,7 +19,50 @@
       </span>
     </div>
   </div>
-  <div class="rating"></div>
+
+  <div class="rating">
+    <div class="ratingContent">
+      <h2>Ratings</h2>
+<!--      <ngx-material-rating color="primary" [(ngModel)]="ratings[i].value" [max]="5"></ngx-material-rating>-->
+    </div>
+    <div class="reviews">
+      <h2>Reviews</h2>
+      <div *ngFor="let review of reviews | async" class="reviewInfo">
+        <p>On {{ review.date }}, <strong>{{ review.user.displayName }}</strong> said: </p>
+        <p>{{ review.text }}</p>
+        <div class="stars">
+          <div class="starBox">
+            <span class="title">Quality of food</span>
+            <ngb-rating [(rate)]="review.foodRating">
+              <ng-template let-fill="fill" let-index="index">
+                <span disabled class="star" [class.filled]="fill === 100" [class.bad]="index < 3">&#9733;</span>
+              </ng-template>
+            </ngb-rating>
+            <span>{{ review.foodRating }}</span>
+          </div>
+          <div class="starBox">
+            <span class="title">Service quality</span>
+            <ngb-rating [(rate)]="review.serviceRating">
+              <ng-template let-fill="fill" let-index="index">
+                <span disabled class="star" [class.filled]="fill === 100" [class.bad]="index < 3">&#9733;</span>
+              </ng-template>
+            </ngb-rating>
+            <span>{{ review.serviceRating }}</span>
+          </div>
+          <div class="starBox">
+            <span class="title">Interior</span>
+            <ngb-rating [(rate)]="review.interiorRating">
+              <ng-template let-fill="fill" let-index="index">
+                <span disabled class="star" [class.filled]="fill === 100" [class.bad]="index < 3">&#9733;</span>
+              </ng-template>
+            </ngb-rating>
+            <span>{{ review.interiorRating }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div *ngIf="!(user | async)">
     <a routerLink="register">Register</a>or
     <a routerLink="register">Login</a> to leave a review
@@ -28,8 +71,8 @@
     <h2>Add review</h2>
     <form (ngSubmit)="addReview()" class="addReview" #formReview='ngForm'>
       <mat-form-field appearance="outline" class="textarea">
-        <mat-label>Description</mat-label>
-        <textarea matInput rows="8" required name="description" ngModel></textarea>
+        <mat-label>Leave your feedback</mat-label>
+        <textarea matInput rows="8" required name="text" ngModel></textarea>
       </mat-form-field>
       <div class="select">
         <mat-form-field appearance="fill">

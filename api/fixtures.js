@@ -52,26 +52,29 @@ const run = async () => {
     });
 
     await Review.create({
-        text: 'lorem ipsum',
+        text: 'Perfect place in Bishkek',
         foodRating: 4.5,
         serviceRating: 5.0,
         interiorRating: 3.5,
         place: Lounge,
         user: user,
+        date: new Date().toISOString()
     }, {
-        text: 'lorem ipsum',
+        text: 'it\'s too expensive in my opinion',
         foodRating: 4.5,
         serviceRating: 5.0,
         interiorRating: 3.5,
         place: NightClub,
         user: user,
+        date: new Date().toISOString()
     }, {
-        text: 'lorem ipsum',
+        text: 'The best place in Bishkek',
         foodRating: 4.5,
         serviceRating: 5.0,
         interiorRating: 3.5,
         place: CoffeeHouse,
         user: user,
+        date: new Date().toISOString()
     });
 
     await Images.create({
