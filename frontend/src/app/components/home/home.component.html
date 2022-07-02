@@ -1,1 +1,10 @@
-<p>home works!</p>
+<div class="cards">
+  <mat-card class="example-card" *ngFor="let place of places | async">
+    <img mat-card-image [src]="apiUrl + '/uploads/' + place.mainImage" alt="place image">
+    <mat-card-actions>
+      <span class="title">{{ place.title }}</span>
+      <p>{{ place.rate }}</p>
+    </mat-card-actions>
+  </mat-card>
+</div>
+

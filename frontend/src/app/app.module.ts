@@ -27,6 +27,8 @@ import { UsersEffects } from './store/users/users.effects';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatMenuModule } from '@angular/material/menu';
 import { AddPlaceComponent } from './components/add-place/add-place.component';
+import { placesReducer } from './store/places/places.reducer';
+import { PlacesEffects } from './store/places/places.effects';
 
 export const localStorageSyncReducer = (reducer: ActionReducer<any>) => {
   return localStorageSync({
@@ -54,8 +56,8 @@ const metaReducers: Array<MetaReducer> = [localStorageSyncReducer];
         BrowserAnimationsModule,
         HttpClientModule,
         FormsModule,
-        StoreModule.forRoot({users: usersReducer}, {metaReducers}),
-        EffectsModule.forRoot([UsersEffects]),
+        StoreModule.forRoot({users: usersReducer, places: placesReducer}, {metaReducers}),
+        EffectsModule.forRoot([UsersEffects, PlacesEffects]),
         MatToolbarModule,
         MatIconModule,
         MatButtonModule,

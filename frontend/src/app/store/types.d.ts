@@ -10,9 +10,9 @@ export type UserState = {
 }
 
 export type PlaceState = {
-  place: null | PlaceModel,
+  places: PlaceModel[],
   fetchLoading: boolean,
-  fetchError: null | RegisterError,
+  fetchError: null | string,
 }
 
 export type AppState = {

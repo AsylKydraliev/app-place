@@ -12,7 +12,7 @@ export class PlaceService {
   constructor(private http: HttpClient) { }
 
   getPlaces() {
-    return this.http.get<Place[]>(environment.apiUrl + 'places').pipe(
+    return this.http.get<Place[]>(environment.apiUrl + '/places').pipe(
       map(response => {
         return response.map(places => {
           return new PlaceModel(
