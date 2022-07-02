@@ -33,6 +33,7 @@ import { AuthInterceptor } from './auth.interceptor';
 import { PlaceComponent } from './components/place/place.component';
 import { ImagesEffects } from './store/images/images.effects';
 import { imagesReducer } from './store/images/images.reducer';
+import { MatSelectModule } from '@angular/material/select';
 
 export const localStorageSyncReducer = (reducer: ActionReducer<any>) => {
   return localStorageSync({
@@ -55,30 +56,31 @@ const metaReducers: Array<MetaReducer> = [localStorageSyncReducer];
         AddPlaceComponent,
         PlaceComponent
     ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        BrowserAnimationsModule,
-        HttpClientModule,
-        FormsModule,
-        StoreModule.forRoot({
-          users: usersReducer,
-          places: placesReducer,
-          images: imagesReducer
-        }, {metaReducers}),
-        EffectsModule.forRoot([
-          UsersEffects, PlacesEffects, ImagesEffects
-        ]),
-        MatToolbarModule,
-        MatIconModule,
-        MatButtonModule,
-        MatCardModule,
-        MatProgressBarModule,
-        MatFormFieldModule,
-        MatInputModule,
-        MatSnackBarModule,
-        MatMenuModule
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    HttpClientModule,
+    FormsModule,
+    StoreModule.forRoot({
+      users: usersReducer,
+      places: placesReducer,
+      images: imagesReducer
+    }, {metaReducers}),
+    EffectsModule.forRoot([
+      UsersEffects, PlacesEffects, ImagesEffects
+    ]),
+    MatToolbarModule,
+    MatIconModule,
+    MatButtonModule,
+    MatCardModule,
+    MatProgressBarModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSnackBarModule,
+    MatMenuModule,
+    MatSelectModule
+  ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })

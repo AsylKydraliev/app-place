@@ -21,6 +21,7 @@ export type PlaceState = {
 
 export type ImagesState = {
   images: Images[],
+  image: Images | null,
   fetchLoading: boolean,
   fetchError: null | string,
   createLoading: boolean,

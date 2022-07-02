@@ -30,31 +30,24 @@ router.get('/:id', async (req, res, next) => {
     }
 });
 
-// router.post('/', authorization, permit('user', 'admin'), upload.single('mainImage'), async (req, res, next) => {
-//     try {
-//         if(!req.body.agree || req.body.agree && (req.body.agree === false)) {
-//             return res.status(400).send(
-//                 {error: 'You did not agree with the terms of creating a new establishment!'}
-//             )
-//         }
-//
-//         const place = new Place({
-//             title: req.body.title,
-//             description: req.body.description,
-//             mainImage: null,
-//             user: req.body.user
-//         });
-//
-//         if(req.file) {
-//             place.mainImage = req.file.filename;
-//         }
-//
-//         await place.save();
-//
-//         return res.send(place);
-//     }catch (e) {
-//         next(e);
-//     }
-// });
+router.post('/addPhoto', authorization, permit('user', 'admin'), upload.single('image'), async (req, res, next) => {
+    try {
+        const image = new Images({
+            image: null,
+            user: req.user,
+            place: req.body.place
+        });
+
+        if(req.file) {
+            image.image = req.file.filename;
+        }
+
+        await image.save();
+
+        return res.send(image);
+    }catch (e) {
+        next(e);
+    }
+});
 
 module.exports = router;

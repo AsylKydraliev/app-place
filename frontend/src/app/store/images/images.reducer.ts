@@ -1,9 +1,15 @@
 import { ImagesState } from '../types';
 import { createReducer, on } from '@ngrx/store';
-import { getImagesByPlaceFailure, getImagesByPlaceRequest, getImagesByPlaceSuccess } from './images.actions';
+import {
+  addPhotoFailure, addPhotoRequest, addPhotoSuccess,
+  getImagesByPlaceFailure,
+  getImagesByPlaceRequest,
+  getImagesByPlaceSuccess
+} from './images.actions';
 
 const initialState: ImagesState = {
   images: [],
+  image: null,
   fetchLoading: false,
   fetchError: null,
   createLoading: false,
@@ -12,9 +18,9 @@ const initialState: ImagesState = {
 
 export const imagesReducer = createReducer(
   initialState,
-  // on(createPlacesRequest, state => ({...state, createLoading: true})),
-  // on(createPlacesSuccess, (state, {place}) => ({...state, createLoading: false, place})),
-  // on(createPlacesFailure, (state, {error}) => ({...state, createLoading: false, createError: error})),
+  on(addPhotoRequest, state => ({...state, createLoading: true})),
+  on(addPhotoSuccess, (state, {image}) => ({...state, createLoading: false, image})),
+  on(addPhotoFailure, (state, {error}) => ({...state, createLoading: false, createError: error})),
 
   on(getImagesByPlaceRequest, state => ({...state, fetchLoading: true})),
   on(getImagesByPlaceSuccess, (state, {images}) => ({...state, fetchLoading: false, images})),

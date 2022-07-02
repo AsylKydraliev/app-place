@@ -11,7 +11,7 @@
     </div>
     <h2>Gallery</h2>
     <div class="gallery">
-      <span  *ngFor="let image of images | async">
+      <span *ngFor="let image of images | async">
         <img
           [src]="apiUrl + '/uploads/' + image.image"
           alt="image"
@@ -20,6 +20,70 @@
     </div>
   </div>
   <div class="rating"></div>
-  <div class="addReview"></div>
-  <div class="addPhoto"></div>
+  <div *ngIf="!(user | async)">
+    <a routerLink="register">Register</a>or
+    <a routerLink="register">Login</a> to leave a review
+  </div>
+  <div *ngIf="user | async" class="formReview">
+    <h2>Add review</h2>
+    <form (ngSubmit)="addReview()" class="addReview" #formReview='ngForm'>
+      <mat-form-field appearance="outline" class="textarea">
+        <mat-label>Description</mat-label>
+        <textarea matInput rows="8" required name="description" ngModel></textarea>
+      </mat-form-field>
+      <div class="select">
+        <mat-form-field appearance="fill">
+          <mat-label>Quality of food</mat-label>
+          <mat-select  name="foodRating" required ngModel>
+            <mat-option
+              *ngFor="let number of ratingNumber"
+              [value]="number">{{ number }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Service quality</mat-label>
+          <mat-select name="serviceRating" required ngModel>
+            <mat-option
+              *ngFor="let number of ratingNumber"
+              [value]="number">{{ number }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Interior</mat-label>
+          <mat-select name="interiorRating" required ngModel>
+            <mat-option
+              *ngFor="let number of ratingNumber"
+              [value]="number">{{ number }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <button
+          type="submit"
+          mat-raised-button
+          color="warn"
+          [disabled]="formReview.invalid"
+        >
+          Submit review
+        </button>
+      </div>
+    </form>
+  </div>
+  <div class="addPhoto" *ngIf="user | async">
+    <h2>Upload new photo</h2>
+    <form (ngSubmit)="addPhoto()" class="addPhoto" #formPhoto='ngForm'>
+        <mat-form-field appearance="outline">
+          <app-file-input name="image" ngModel required></app-file-input>
+        </mat-form-field>
+      <button
+        type="submit"
+        mat-raised-button
+        color="warn"
+        [disabled]="formPhoto.invalid"
+      >
+        Upload
+      </button>
+    </form>
+  </div>
 </div>

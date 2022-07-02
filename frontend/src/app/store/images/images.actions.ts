@@ -1,18 +1,18 @@
 import { createAction, props } from '@ngrx/store';
-import { Images } from '../../models/images.model';
+import { Images, ImageData } from '../../models/images.model';
 
-// export const createPlacesRequest = createAction(
-//   '[Place] Create Request',
-//   props<{placeData: PlaceData}>()
-// );
-// export const createPlacesSuccess = createAction(
-//   '[Place] Create Success',
-//   props<{place: Place}>()
-// );
-// export const createPlacesFailure = createAction(
-//   '[Place] Create Failure',
-//   props<{error: string}>()
-// )
+export const addPhotoRequest = createAction(
+  '[Image] Add Request',
+  props<{imageData: ImageData}>()
+);
+export const addPhotoSuccess = createAction(
+  '[Image] Add Success',
+  props<{image: Images}>()
+);
+export const addPhotoFailure = createAction(
+  '[Image] Add Failure',
+  props<{error: string}>()
+)
 
 export const getImagesByPlaceRequest = createAction(
   '[Images] Fetch Request',

@@ -22,13 +22,12 @@ export class AddPlaceComponent implements OnInit, OnDestroy {
 
   constructor(private store: Store<AppState>) {
     this.user = store.select(state => state.users.user);
-   this.userSub =  this.user.subscribe(user => {
+    this.userSub =  this.user.subscribe(user => {
       this.userId = user?._id;
     })
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   onSubmit() {
     const placeData: PlaceData = {

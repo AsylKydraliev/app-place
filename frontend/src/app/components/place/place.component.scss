@@ -5,7 +5,7 @@
 .placeInfo{
   display: flex;
   flex-direction: column;
-  border-bottom: 1px solid #3f51b5;
+  border-bottom: 2px solid #3f51b5;
   .placeContent {
     display: flex;
     justify-content: space-between;
@@ -33,5 +33,35 @@
     height: 120px;
     margin-right: 16px;
     box-shadow: 0 0 8px 2px #000000;
+  }
+}
+
+.formReview{
+  border-bottom: 2px solid #3f51b5;
+  padding: 20px 0;
+}
+
+.addReview {
+  .textarea {
+    width: 100%;
+  }
+  .select{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  button{
+  }
+}
+
+.addPhoto{
+  padding: 20px 0;
+  display: flex;
+  flex-direction: column;
+  mat-form-field{
+    width: 50%;
+  }
+  button{
+    width: 25%;
   }
 }
