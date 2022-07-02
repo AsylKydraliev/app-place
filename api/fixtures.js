@@ -34,19 +34,19 @@ const run = async () => {
     const [Lounge, NightClub, CoffeeHouse] = await Place.create({
         title: 'Lounge',
         mainImage: 'lounge.jpeg',
-        description: 'The place in Bishkek 2020!',
+        description: 'The best place in Bishkek 2020!',
         user: user,
         rate: 4.0
     }, {
         title: 'NightClub',
         mainImage: 'club.jpg',
-        description: 'The place in Bishkek 2021!',
+        description: 'The best place in Bishkek 2021!',
         user: user,
         rate: 3.0
     }, {
         title: 'CoffeeHouse',
         mainImage: 'coffee.jpg',
-        description: 'The place in Bishkek 2022!',
+        description: 'The best place in Bishkek 2022!',
         user: admin,
         rate: 5.0
     });

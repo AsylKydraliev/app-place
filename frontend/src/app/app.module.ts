@@ -31,6 +31,8 @@ import { placesReducer } from './store/places/places.reducer';
 import { PlacesEffects } from './store/places/places.effects';
 import { AuthInterceptor } from './auth.interceptor';
 import { PlaceComponent } from './components/place/place.component';
+import { ImagesEffects } from './store/images/images.effects';
+import { imagesReducer } from './store/images/images.reducer';
 
 export const localStorageSyncReducer = (reducer: ActionReducer<any>) => {
   return localStorageSync({
@@ -59,8 +61,14 @@ const metaReducers: Array<MetaReducer> = [localStorageSyncReducer];
         BrowserAnimationsModule,
         HttpClientModule,
         FormsModule,
-        StoreModule.forRoot({users: usersReducer, places: placesReducer}, {metaReducers}),
-        EffectsModule.forRoot([UsersEffects, PlacesEffects]),
+        StoreModule.forRoot({
+          users: usersReducer,
+          places: placesReducer,
+          images: imagesReducer
+        }, {metaReducers}),
+        EffectsModule.forRoot([
+          UsersEffects, PlacesEffects, ImagesEffects
+        ]),
         MatToolbarModule,
         MatIconModule,
         MatButtonModule,

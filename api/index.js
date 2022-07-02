@@ -5,6 +5,7 @@ const config = require("./config");
 
 const users = require('./routes/user');
 const places = require('./routes/place');
+const images = require('./routes/images');
 
 const app = express();
 const port = 8000;
@@ -13,6 +14,7 @@ app.use(cors());
 app.use(express.json());
 app.use('/users', users);
 app.use('/places', places);
+app.use('/images', images);
 app.use(express.static('public'));
 
 const run = async() => {

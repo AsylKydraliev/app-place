@@ -9,8 +9,14 @@
         <img [src]="apiUrl + '/uploads/' + placeData?.mainImage" alt="">
       </div>
     </div>
+    <h2>Gallery</h2>
     <div class="gallery">
-      gallery
+      <span  *ngFor="let image of images | async">
+        <img
+          [src]="apiUrl + '/uploads/' + image.image"
+          alt="image"
+        >
+      </span>
     </div>
   </div>
   <div class="rating"></div>

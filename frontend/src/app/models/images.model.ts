@@ -4,5 +4,14 @@ export interface Images {
   user: string
 }
 
+export class Image {
+  constructor(
+    public image: string,
+    public place: string,
+    public user: string
+  ) {
+  }
+}
+
 
 
