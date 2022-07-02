@@ -24,8 +24,9 @@ import { MatInputModule } from '@angular/material/input';
 import { FileInputComponent } from './ui/file-input/file-input.component';
 import { ValidateIdenticalDirective } from './validate-identical.directive';
 import { UsersEffects } from './store/users/users.effects';
-import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatMenuModule } from '@angular/material/menu';
+import { AddPlaceComponent } from './components/add-place/add-place.component';
 
 export const localStorageSyncReducer = (reducer: ActionReducer<any>) => {
   return localStorageSync({
@@ -44,7 +45,8 @@ const metaReducers: Array<MetaReducer> = [localStorageSyncReducer];
         RegisterComponent,
         LoginComponent,
         FileInputComponent,
-        ValidateIdenticalDirective
+        ValidateIdenticalDirective,
+        AddPlaceComponent
     ],
     imports: [
         BrowserModule,

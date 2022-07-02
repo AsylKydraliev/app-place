@@ -1,0 +1,36 @@
+<div>
+  <h1>Add new place</h1>
+  <form #f=ngForm (ngSubmit)="onSubmit()">
+    <div class="field">
+      <mat-label>Title</mat-label>
+      <mat-form-field appearance="outline">
+        <input matInput required name="title" ngModel>
+      </mat-form-field>
+    </div>
+    <div class="field">
+      <mat-label>Description</mat-label>
+      <mat-form-field appearance="outline">
+        <textarea matInput rows="8" required name="description" ngModel></textarea>
+      </mat-form-field>
+    </div>
+    <div class="field">
+      <mat-label>Main photo</mat-label>
+      <mat-form-field appearance="outline">
+        <app-file-input name="image" ngModel required></app-file-input>
+      </mat-form-field>
+    </div>
+    <div class="form-field accept">
+      <input required type="checkbox" class="custom-checkbox" id="accept" name="agree" ngModel>
+      <label for="accept">I understand</label>
+    </div>
+    <ng-template #btn>
+      <button
+        type="submit"
+        mat-raised-button
+        color="primary"
+        [disabled]="f.invalid"
+      >Create new place</button>
+    </ng-template>
+    <mat-progress-bar mode="indeterminate" *ngIf="(loading | async) else btn"></mat-progress-bar>
+  </form>
+</div>
