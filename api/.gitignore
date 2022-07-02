@@ -3,3 +3,12 @@ node_modules
 public/uploads/*
 !public/uploads/.gitkeep
 !public/uploads/user.png
+!public/uploads/club.jpg
+!public/uploads/club1.jpg
+!public/uploads/club2.jpg
+!public/uploads/coffee.jpg
+!public/uploads/coffee1.jpg
+!public/uploads/coffee2.jpg
+!public/uploads/lounge.jpeg
+!public/uploads/lounge1.jpg
+!public/uploads/lounge2.jpg

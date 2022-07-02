@@ -4,7 +4,7 @@ export interface Place {
   description: string,
   mainImage: string,
   user: string,
-  reviews: Review[]
+  rate: number
 }
 
 export interface PlaceData {
@@ -22,22 +22,12 @@ export class PlaceModel {
     public description: string,
     public mainImage: string,
     public user: string,
-    public reviews: Review[],
+    public rate: number
   ) {}
 }
 
-export interface Image {
-  image: string,
-  place: string,
-  user: string
-}
 
-export interface Review {
-  text: string,
-  rating: number,
-  place: string,
-  user: string
-}
+
 
 
 

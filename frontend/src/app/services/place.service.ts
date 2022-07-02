@@ -21,7 +21,7 @@ export class PlaceService {
             places.description,
             places.mainImage,
             places.user,
-            places.reviews,
+            places.rate,
           )
         })
       })
