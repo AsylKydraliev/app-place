@@ -23,7 +23,46 @@
   <div class="rating">
     <div class="ratingContent">
       <h2>Ratings</h2>
-<!--      <ngx-material-rating color="primary" [(ngModel)]="ratings[i].value" [max]="5"></ngx-material-rating>-->
+      <div class="reviewInfo">
+        <div class="stars">
+          <div class="starBox">
+            <span class="title"><strong>Overall</strong></span>
+            <ngb-rating [(rate)]="totalSum">
+              <ng-template let-fill="fill" let-index="index">
+                <span disabled class="star" [class.filled]="fill === 100" [class.bad]="index < 3">&#9733;</span>
+              </ng-template>
+            </ngb-rating>
+            <span>{{ totalSum }}</span>
+          </div>
+          <div class="starBox">
+            <span class="title">Quality of food</span>
+            <ngb-rating [(rate)]="foodSum">
+              <ng-template let-fill="fill" let-index="index">
+                <span disabled class="star" [class.filled]="fill === 100" [class.bad]="index < 3">&#9733;</span>
+              </ng-template>
+            </ngb-rating>
+            <span>{{ foodSum }}</span>
+          </div>
+          <div class="starBox">
+            <span class="title">Service quality</span>
+            <ngb-rating [(rate)]="serviceSum">
+              <ng-template let-fill="fill" let-index="index">
+                <span disabled class="star" [class.filled]="fill === 100" [class.bad]="index < 3">&#9733;</span>
+              </ng-template>
+            </ngb-rating>
+            <span>{{ serviceSum }}</span>
+          </div>
+          <div class="starBox">
+            <span class="title">Interior</span>
+            <ngb-rating [(rate)]="interiorSum">
+              <ng-template let-fill="fill" let-index="index">
+                <span disabled class="star" [class.filled]="fill === 100" [class.bad]="index < 3">&#9733;</span>
+              </ng-template>
+            </ngb-rating>
+            <span>{{ interiorSum }}</span>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="reviews">
       <h2>Reviews</h2>
@@ -63,9 +102,10 @@
     </div>
   </div>
 
-  <div *ngIf="!(user | async)">
-    <a routerLink="register">Register</a>or
-    <a routerLink="register">Login</a> to leave a review
+  <div *ngIf="!(user | async)" class="userMenu">
+    Please
+    <a routerLink="register">register</a> or
+     <a routerLink="register">login</a> to leave a review
   </div>
   <div *ngIf="user | async" class="formReview">
     <h2>Add review</h2>

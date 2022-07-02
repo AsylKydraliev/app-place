@@ -29,7 +29,7 @@ export class ReviewsEffects {
         map(review => addReviewSuccess({review})),
         tap(() => {
           this.helpers.openSnackbar('Review added');
-          // this.store.dispatch(getImagesByPlaceRequest({id: imageData.place}));
+          this.store.dispatch(getReviewsRequest({id: reviewData.place}));
         }),
         catchError(() => of(addReviewFailure({
           error: 'Something went wrong!'
