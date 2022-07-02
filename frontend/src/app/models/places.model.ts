@@ -13,6 +13,7 @@ export interface PlaceData {
   description: string,
   mainImage: string,
   user: string,
+  agree: boolean
 }
 
 export class PlaceModel {

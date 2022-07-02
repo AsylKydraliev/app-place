@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
-import { Place, PlaceModel } from '../models/places.model';
+import { Place, PlaceModel, PlaceData } from '../models/places.model';
 import { map } from 'rxjs';
 
 @Injectable({
@@ -28,14 +28,14 @@ export class PlaceService {
     );
   }
 
-  // createPlace(place: placeData){
-  //   const formData = new FormData();
-  //
-  //   Object.keys(albumData).forEach(key => {
-  //     if (albumData[key] !== null) {
-  //       formData.append(key, albumData[key]);
-  //     }
-  //   });
-  //   return this.http.post<ApiAlbumsData>(environment.apiUrl + `/albums`, formData);
-  // }
+  createPlace(placeData: PlaceData){
+    const formData = new FormData();
+
+    Object.keys(placeData).forEach(key => {
+      if (placeData[key] !== null) {
+        formData.append(key, placeData[key]);
+      }
+    });
+    return this.http.post<Place>(environment.apiUrl + `/places`, formData);
+  }
 }

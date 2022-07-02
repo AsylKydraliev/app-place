@@ -8,7 +8,7 @@ import { ActionReducer, MetaReducer, StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { ToolbarComponent } from './ui/toolbar/toolbar.component';
 import { HomeComponent } from './components/home/home.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { localStorageSync } from 'ngrx-store-localstorage';
 import { usersReducer } from './store/users/users.reducer';
@@ -29,6 +29,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { AddPlaceComponent } from './components/add-place/add-place.component';
 import { placesReducer } from './store/places/places.reducer';
 import { PlacesEffects } from './store/places/places.effects';
+import { AuthInterceptor } from './auth.interceptor';
 
 export const localStorageSyncReducer = (reducer: ActionReducer<any>) => {
   return localStorageSync({
@@ -68,7 +69,7 @@ const metaReducers: Array<MetaReducer> = [localStorageSyncReducer];
         MatSnackBarModule,
         MatMenuModule
     ],
-  providers: [],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

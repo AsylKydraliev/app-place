@@ -30,8 +30,14 @@ router.get('/', async (req, res, next) => {
     }
 });
 
-router.post('/', authorization, permit('user', 'admin'), upload.single('image'), async (req, res, next) => {
+router.post('/', authorization, permit('user', 'admin'), upload.single('mainImage'), async (req, res, next) => {
     try {
+        if(!req.body.agree || req.body.agree && (req.body.agree === false)) {
+            return res.status(400).send(
+                {error: 'You did not agree with the terms of creating a new establishment!'}
+            )
+        }
+
         const place = new Place({
             title: req.body.title,
             description: req.body.description,
